@@ -40,13 +40,51 @@ const locationInfo = (req, res) => {
     sidebar: {
       context: 'is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
       callToAction: 'If you\'ve been and you like it - or if you don\'t - please leave a review to help other people just like your.'
+    },
+    location: {
+      name: 'Starcups',
+      address: '125 High Street, Reading, RG6 1PS',
+      rating: 3,
+      facilities: ['Hot drinks', 'Food', 'Premium Wifi'],
+      coords: {
+        lat: 36.830360,
+        lng: -76.122750
+      },
+      openingTimes: [{
+        days: 'Monday - Friday',
+        opening: '7:00am',
+        closing: '7:00pm',
+        closed: false,
+      }, {
+        days: 'Saturday',
+        opening: '8:00am',
+        closing: '5:00pm',
+        closed: false,
+      }, {
+        days: 'Sunday',
+        closed: true,
+      }],
+      reviews: [{
+        author: 'AJ',
+        rating: 1,
+        timeStamp: '16 May 2018',
+        reviewText: 'What a great place. I can\'t say enough good things about it.'
+      }, {
+        author: 'Cole B',
+        rating: 3,
+        timeStamp: '26 May 2018',
+        reviewText: 'It was okay. Coffee wasn\'t great, but the wifi was fast.'
+      }]
     }
   });
 }
 
 const addReview = (req, res) => {
   res.render('location-review-form', {
-    title: 'Add Review'
+    title: 'Review Starcups on Loc8r',
+    pageHeader: {
+      title: 'Review Starcups'
+    }
   });
 }
 
