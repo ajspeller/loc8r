@@ -129,13 +129,6 @@ const reviewsUpdateOne = (req, res) => {
     } else if (err) {
       return res.status(400).json(err);
     }
-    //console.log('_doAddReview');
-    console.log(location);
-    console.log({
-      author: req.body.author,
-      rating: +req.body.rating,
-      reviewText: req.body.reviewText
-    });
     if (location.reviews && location.reviews.length > 0) {
       const thisReview = location.reviews.id(req.params.reviewid);
       if (!thisReview) {

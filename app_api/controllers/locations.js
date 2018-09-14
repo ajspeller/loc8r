@@ -142,22 +142,16 @@ const locationsUpdateOne = (req, res) => {
 
 
 const locationsDeleteOne = (req, res) => {
-  console.log('locationsDeleteOne');
 
   const locationid = req.params.locationid;
-  console.log('locatonid');
-  console.log(locationid);
   if (locationid) {
     Loc.findByIdAndRemove(locationid).exec((err, location) => {
       if (err) {
-        console.log('error found');
         return res.status(404).json(err);
       }
-      console.log('no remove error happened');
       return res.status(204).json(null);
     });
   } else {
-    console.log('didnt have a locationid in the params');
     return res.status(404).json({
       "message": "No locationid"
     });
