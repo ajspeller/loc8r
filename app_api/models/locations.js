@@ -14,6 +14,7 @@ const openingTimeSchema = new mongoose.Schema({
   }
 });
 
+
 const reviewSchema = new mongoose.Schema({
   author: String,
   rating: {
@@ -27,7 +28,8 @@ const reviewSchema = new mongoose.Schema({
     type: Date,
     'default': Date.now
   }
-})
+});
+
 
 const locationSchema = new mongoose.Schema({
   name: {
@@ -48,6 +50,8 @@ const locationSchema = new mongoose.Schema({
   },
   openingTimes: [openingTimeSchema],
   reviews: [reviewSchema],
+}, {
+  usePushEach: true
 });
 
 mongoose.model('Location', locationSchema);
