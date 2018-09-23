@@ -22,7 +22,7 @@ const locationsListByDistance = (req, res) => {
     maxDistance: maxDist // units are meters
   };
 
-  if (!lng || !lat || !maxResults || !maxDist) {
+  if (!lng && lng !== 0 || !lat && lat !== 0 || !maxResults || !maxDist) {
     return res.status(404).json({
       "message": "lng, lat, maxResults & maxDist query parameters are required"
     });
