@@ -170,15 +170,12 @@ const doAddReview = (req, res) => {
     json: postData,
   };
   if (!postData.author || !postData.rating || !postData.reviewText) {
-    console.log('application error ==========');
     res.redirect(`/location/${locationid}/review/new?err=val`);
   } else {
     request(requestOptions, (err, response, body) => {
       if (response.statusCode === 201) {
         res.redirect(`/location/${locationid}`);
       } else if (response.statusCode === 400 && body.name && body.name === 'ValidationError') {
-        console.log('database error ==========');
-
         res.redirect(`/location/${locationid}/review/new?err=val`);
       } else {
         _showError(req, res, response.statusCode);
