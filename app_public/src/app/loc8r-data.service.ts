@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Location } from './home-list/home-list.component';
+import { Review } from './location';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,32 @@ export class Loc8rDataService {
     const maxResults = 10;
     const url = `${
       this.apiBaseUrl
-    }/locations?lng=${lng}&lat=${lat}&maxDist=${maxDist}&maxResults=${maxResults}`;
+    }locations?lng=${lng}&lat=${lat}&maxDist=${maxDist}&maxResults=${maxResults}`;
     return this.http
       .get(url)
       .toPromise()
       .then((response: Location[]) => response)
+      .catch(this.handleError);
+  }
+
+  public getLocationById(locationId: string): Promise<Location> {
+    const url = `${this.apiBaseUrl}locations/${locationId}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((response: Location) => response)
+      .catch(this.handleError);
+  }
+
+  public addReviewByLocationId(
+    locationId: string,
+    formData: Review
+  ): Promise<Review> {
+    const url = `${this.apiBaseUrl}locations/${locationId}/reviews`;
+    return this.http
+      .post(url, formData)
+      .toPromise()
+      .then((response: any) => response)
       .catch(this.handleError);
   }
 

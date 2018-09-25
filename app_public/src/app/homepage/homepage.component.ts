@@ -8,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
   constructor() {}
 
+  line1 =
+    'Looking for wifi and a seat? Loc8r helps you find places to work when out and about.';
+  line2 =
+    'Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you are looking for.';
+
   pageContent = {
     header: {
       title: 'Loc8r',
       strapline: 'Find places to work with wifi near you!'
     },
-    sidebar:
-      "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for."
+    sidebar: `${this.line1} ${this.line2}`
   };
 
   ngOnInit() {}

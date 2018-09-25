@@ -1,9 +1,9 @@
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
 import { HomeListComponent } from './home-list/home-list.component';
 import { DistancePipe } from './distance.pipe';
@@ -16,6 +16,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { GeolocationService } from './geolocation.service';
 import { HtmlLineBreaksPipe } from './html-line-breaks.pipe';
 import { RatingStarsComponent } from './rating-stars/rating-stars.component';
+import { LocationDetailsComponent } from './location-details/location-details.component';
+import { DetailsPageComponent } from './details-page/details-page.component';
+import { MostRecentFirstPipe } from './most-recent-first.pipe';
 
 @NgModule({
   declarations: [
@@ -27,17 +30,12 @@ import { RatingStarsComponent } from './rating-stars/rating-stars.component';
     PageHeaderComponent,
     SidebarComponent,
     HtmlLineBreaksPipe,
-    RatingStarsComponent
+    RatingStarsComponent,
+    LocationDetailsComponent,
+    DetailsPageComponent,
+    MostRecentFirstPipe
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      { path: '', component: HomepageComponent },
-      { path: 'about', component: AboutComponent }
-    ])
-  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [Loc8rDataService, GeolocationService],
   bootstrap: [FrameworkComponent]
 })
