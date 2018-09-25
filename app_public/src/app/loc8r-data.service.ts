@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Review } from './location';
@@ -8,7 +9,8 @@ import { Review } from './location';
 export class Loc8rDataService {
   constructor(private http: HttpClient) {}
 
-  private apiBaseUrl = 'http://localhost:3000/api/';
+  // private apiBaseUrl = 'http://localhost:3000/api/';
+  private apiBaseUrl = environment.apiURL;
 
   public getLocations(lat: number, lng: number): Promise<Location[]> {
     const maxDist = 999999999999;
